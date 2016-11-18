@@ -16,5 +16,9 @@ namespace 居保缴费客户端
         {
             InitializeComponent();
         }
+        private void check()
+        {
+
+        }
     }
 }
