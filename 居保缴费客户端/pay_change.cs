@@ -21,6 +21,9 @@ namespace 居保缴费客户端
         {
             groupBox1.Text = "已缴费人员查询";
             groupBox2.Text = "查询结果";
+            label1.Text = "姓名";
+            label2.Text = "身份证号码";
+            button1.Text = "查询";
         }
     }
 }
