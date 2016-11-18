@@ -16,5 +16,11 @@ namespace 居保缴费客户端
         {
             InitializeComponent();
         }
+
+        private void pay_change_Load(object sender, EventArgs e)
+        {
+            groupBox1.Text = "已缴费人员查询";
+            groupBox2.Text = "查询结果";
+        }
     }
 }

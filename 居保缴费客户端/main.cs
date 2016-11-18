@@ -57,7 +57,7 @@ namespace 居保缴费客户端
 
         private void 缴费信息更改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!ShowChildrenForm("pay_add"))
+            if (!ShowChildrenForm("pay_change"))
             {
                 pay_change f2 = new pay_change();
                 f2.MdiParent = this;
