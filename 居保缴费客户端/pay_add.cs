@@ -10,20 +10,11 @@ using System.Windows.Forms;
 
 namespace 居保缴费客户端
 {
-    public partial class Form1 : Form
+    public partial class pay_add : Form
     {
-        public Form1()
+        public pay_add()
         {
             InitializeComponent();
-        }
-        private void check()
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
         }
     }
 }

@@ -16,7 +16,21 @@ namespace 居保缴费客户端
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Form1 f1 = new Form1();
+            //main ma = new main();
+            //string[] s = new string[2];
+            //User_Inf u1 = new User_Inf(s);
+            //u1.noisesEvent += ma.Main_State;
+            //u1.noise();
+            f1.ShowDialog();
+            if (f1.DialogResult == DialogResult.OK)
+            {
+                Application.Run(new main());
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

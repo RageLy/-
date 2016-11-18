@@ -52,8 +52,38 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="main.Designer.cs">
+      <DependentUpon>main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pay_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pay_add.Designer.cs">
+      <DependentUpon>pay_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pay_change.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pay_change.Designer.cs">
+      <DependentUpon>pay_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="main.resx">
+      <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pay_add.resx">
+      <DependentUpon>pay_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pay_change.resx">
+      <DependentUpon>pay_change.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
