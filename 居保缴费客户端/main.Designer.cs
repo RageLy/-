@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.缴费信息录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.缴费信息更改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.缴费记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,7 +39,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.缴费信息录入ToolStripMenuItem,
-            this.缴费信息更改ToolStripMenuItem});
+            this.缴费信息更改ToolStripMenuItem,
+            this.缴费记录查询ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(801, 25);
@@ -56,8 +58,14 @@
             // 
             this.缴费信息更改ToolStripMenuItem.Name = "缴费信息更改ToolStripMenuItem";
             this.缴费信息更改ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
-            this.缴费信息更改ToolStripMenuItem.Text = "缴费信息更改";
+            this.缴费信息更改ToolStripMenuItem.Text = "人员信息录入";
             this.缴费信息更改ToolStripMenuItem.Click += new System.EventHandler(this.缴费信息更改ToolStripMenuItem_Click);
+            // 
+            // 缴费记录查询ToolStripMenuItem
+            // 
+            this.缴费记录查询ToolStripMenuItem.Name = "缴费记录查询ToolStripMenuItem";
+            this.缴费记录查询ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
+            this.缴费记录查询ToolStripMenuItem.Text = "缴费记录查询";
             // 
             // main
             // 
@@ -82,5 +90,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 缴费信息录入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 缴费信息更改ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 缴费记录查询ToolStripMenuItem;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Data.SqlClient;
 
 namespace 居保缴费客户端
 {
@@ -55,16 +56,31 @@ namespace 居保缴费客户端
             }
             else
             {
-                if (checkBox1.Checked == true)
+                bool res = login();
+                if (res == true)
                 {
-                    string temp = "";
-                    temp = temp + textBox1.Text+",";
-                    temp = temp + textBox2.Text+",";
-                    temp = temp + textBox3.Text;
-                    SetValue("user", temp);
-                  //  MessageBox.Show("保存成功");
+                    if (checkBox1.Checked == true)
+                    {
+                        string temp = "";
+                        temp = temp + textBox1.Text + ",";
+                        temp = temp + textBox2.Text + ",";
+                        temp = temp + textBox3.Text;
+                        SetValue("user", temp);
+                        //  MessageBox.Show("保存成功");
+                    }
+                    else
+                    {
+                        string temp = "";
+                        temp = temp + textBox1.Text + ",";
+                        temp = temp + textBox2.Text + ",";
+                        SetValue("user", temp);
+                    }
+                    this.DialogResult = DialogResult.OK;
                 }
-                this.DialogResult = DialogResult.OK;
+                else
+                {
+                    
+                }
             }
         }
 
@@ -90,6 +106,49 @@ namespace 居保缴费客户端
             }
             xDoc.Save(System.Windows.Forms.Application.ExecutablePath + ".config");
             ConfigurationManager.RefreshSection("appSetting");
+        }
+
+        private bool login()        //登陆函数
+        {
+            bool results = false;
+            string con = ConfigurationManager.ConnectionStrings["connection1"].ConnectionString;
+            int i = 0;
+            SqlConnection connection1 = new SqlConnection(con);
+            SqlCommand cmd = new SqlCommand("LOGIN_USER", connection1);
+            try
+            {
+                connection1.Open();
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@NAME", SqlDbType.NVarChar, 12).Value = textBox2.Text.Trim();
+                cmd.Parameters.Add("@PASSWORD", SqlDbType.NVarChar, 12).Value = textBox3.Text.Trim(); ;
+                cmd.Parameters.Add("@REGIN_CODE", SqlDbType.NVarChar, 12).Value = textBox1.Text.Trim(); ;
+                cmd.Parameters.Add("@RES", SqlDbType.Int, 4);
+
+                cmd.Parameters["@RES"].Direction = ParameterDirection.Output;
+
+                int s = cmd.ExecuteNonQuery();
+                string res = cmd.Parameters["@RES"].Value.ToString();
+                if (res == "0")
+                {
+                    MessageBox.Show("登陆失败");
+                }
+                else if (res == "1")
+                {
+                    //MessageBox.Show("登陆成功");
+                    results = true;
+                }
+                else
+                {
+                    MessageBox.Show("该用户被禁用");
+                }
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.ToString());
+            }
+
+            return results;
         }
         #endregion
     }
