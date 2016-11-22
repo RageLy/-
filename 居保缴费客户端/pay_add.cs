@@ -45,6 +45,15 @@ namespace 居保缴费客户端
             label9.Text = "缴费金额";
             label10.Text = "";
 
+            textBox1.Enabled = false;
+            textBox3.Enabled = false;
+            textBox4.Enabled = false;
+            textBox5.Enabled = false;
+            textBox6.Enabled = false;
+            textBox7.Enabled = false;
+            textBox8.Enabled = false;
+            textBox9.Enabled = false;
+
 
             steps[0] = "数据库连接中..."; r_steps[0] = "数据库连接中...";
             steps[1] = "数据库连接成功"; r_steps[1] = "数据库连接失败";
@@ -100,12 +109,25 @@ namespace 居保缴费客户端
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)      //确认缴费按钮
+        {
+            bool res = update_data();
+            if (res == true)
+            {
+                textBox2.Text = "";
+                button2.Enabled = false;
+            }
+            else
+            {
+
+            }
+        }
+
         #region 数据的查询和修改
         private bool data_query()       //按照身份证查询数据
         {
             bool results = false;
             string con = ConfigurationManager.ConnectionStrings["connection1"].ConnectionString;
-            int i = 0;
             SqlConnection connection1 = new SqlConnection(con);
             SqlCommand cmd = new SqlCommand("Query_Inf", connection1);
             try
@@ -142,10 +164,10 @@ namespace 居保缴费客户端
                 res[0] = cmd.Parameters["@MARKS1"].Value.ToString();
                 res[1] = cmd.Parameters["@MARKS2"].Value.ToString();
                 res[2] = cmd.Parameters["@MARKS3"].Value.ToString();
-                guid = new Guid(cmd.Parameters["@HANGHAO"].Value.ToString());
+                
                 if (res[0] == "0")
                 {
-                    MessageBox.Show("人员库中没有该人员信息,请确认身份证无误\n如果是新参保人员请点击\n菜单中新增人员信息 ");
+                    MessageBox.Show("人员库中没有该人员信息,请确认身份证无误\n如果是新参保人员请点击\n菜单中人员信息录入");
                 }
                 else if (res[0] == "1")
                 {
@@ -153,6 +175,7 @@ namespace 居保缴费客户端
                 }
                 else
                 {
+                    guid = new Guid(cmd.Parameters["@HANGHAO"].Value.ToString());
                     textBox1.Text = cmd.Parameters["@NAME"].Value.ToString();
                     textBox3.Text = cmd.Parameters["@SEX"].Value.ToString();
                     textBox4.Text = cmd.Parameters["@BIRTHDAY"].Value.ToString();
@@ -161,7 +184,7 @@ namespace 居保缴费客户端
                     textBox7.Text = cmd.Parameters["@LEIXING"].Value.ToString();
                     if (res[1] == "1")
                     {
-                        textBox8.Text = "苦难老人";
+                        textBox8.Text = "困难老人";
                         textBox9.Text = "100";
                     }
                     else
@@ -203,7 +226,6 @@ namespace 居保缴费客户端
         {
             bool results = false;
             string con = ConfigurationManager.ConnectionStrings["connection1"].ConnectionString;
-            int i = 0;
             SqlConnection connection1 = new SqlConnection(con);
             SqlCommand cmd = new SqlCommand("Query_Next_Inf", connection1);
             try
@@ -301,10 +323,57 @@ namespace 居保缴费客户端
 
         private bool update_data()            //上传缴费记录
         {
-            return true;
+            bool results = false;
+            string con = ConfigurationManager.ConnectionStrings["connection1"].ConnectionString;
+            SqlConnection connection1 = new SqlConnection(con);
+            SqlCommand cmd = new SqlCommand("PAY_MONEY", connection1);
+            try
+            {
+                connection1.Open();
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@GUID", SqlDbType.UniqueIdentifier, 14).Value = guid;
+                cmd.Parameters.Add("@DATE", SqlDbType.DateTime, 4).Value=DateTime.Now;
+                cmd.Parameters.Add("@MONEY", SqlDbType.Int, 4).Value=int.Parse(textBox9.Text);
+                cmd.Parameters.Add("@REGIN_CODE", SqlDbType.NVarChar, 12).Value=user[0];
+                cmd.Parameters.Add("@RES", SqlDbType.Int, 4);
+
+
+
+                cmd.Parameters["@RES"].Direction = ParameterDirection.Output;
+
+
+                int s = cmd.ExecuteNonQuery();
+                string[] res = new string[5];
+                res[0] = cmd.Parameters["@RES"].Value.ToString();
+                if (res[0] == "0")
+                {
+                    MessageBox.Show("该人员已缴费");
+                }
+                else if (res[0] == "1")
+                {
+                    MessageBox.Show("缴费成功");
+                    results = true;
+                }
+                else if(res[0]=="2")
+                {
+                    MessageBox.Show("缴费人员不存在");
+                }
+                else
+                {
+                    MessageBox.Show("缴费失败");
+                }
+                connection1.Close();
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.ToString());
+            }
+            return results;
         }
+
         #endregion
 
-      
+       
     }
 }

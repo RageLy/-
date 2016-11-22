@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Configuration;
+
 
 namespace 居保缴费客户端
 {
@@ -70,9 +72,94 @@ namespace 居保缴费客户端
             }
         }
 
+       // static Assembly amy = Assembly.LoadFrom("Student.dll");
         private void main_Load(object sender, EventArgs e)
         {
             this.IsMdiContainer = true;
+            ConfigurationManager.RefreshSection("appSetting");
+            string[] user = ConfigurationManager.AppSettings["user"].Split(',');
+            if(user[3]=="1")
+            {
+                信息统计ToolStripMenuItem.Enabled = false;
+                基本信息修改ToolStripMenuItem.Enabled = false;
+            }
+            else if (user[3] == "2")
+            {
+                信息统计ToolStripMenuItem.Enabled = true;
+                基本信息修改ToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                信息统计ToolStripMenuItem.Enabled = true;
+                基本信息修改ToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void 缴费记录查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!ShowChildrenForm("pay_rec"))
+            {
+                pay_rec f2 = new pay_rec();
+                f2.MdiParent = this;
+                f2.WindowState = FormWindowState.Maximized;
+                f2.Show();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void 信息统计ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!ShowChildrenForm("sum_inf"))
+            {
+                sum_inf f2 = new sum_inf();
+                f2.MdiParent = this;
+                f2.WindowState = FormWindowState.Maximized;
+                f2.Show();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void 基本信息修改ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!ShowChildrenForm("change_inf"))
+            {
+                change_inf f2 = new change_inf();
+                f2.MdiParent = this;
+                f2.WindowState = FormWindowState.Maximized;
+                f2.Show();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void 修改密码ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            change_password f1 = new change_password();
+            f1.ShowDialog();
+            if (f1.DialogResult == DialogResult.OK)
+            {
+                int s = f1.Marks;
+                if (s == 0)
+                {
+                   // MessageBox.Show("修改失败");
+                }
+                else if(s==1)
+                {
+                    //MessageBox.Show("修改成功");
+                }
+                else
+                {
+                    MessageBox.Show("用户取消修改");
+                }
+            }
         }
     }
 }
