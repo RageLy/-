@@ -43,16 +43,16 @@
       <HintPath>..\..\..\..\工作\数据录入\事业单位养老信息录入\机关事业养老信息管理软件\机关事业养老信息管理\插件\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>C:\Users\admin\Downloads\asp.net_xls_帮助类\xls\Bin\NPOI.dll</HintPath>
+      <HintPath>G:\任务文件\NOIP\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML">
-      <HintPath>C:\Users\admin\Downloads\asp.net_xls_帮助类\xls\Bin\NPOI.OOXML.dll</HintPath>
+      <HintPath>G:\任务文件\NOIP\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>C:\Users\admin\Downloads\asp.net_xls_帮助类\xls\Bin\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>G:\任务文件\NOIP\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>C:\Users\admin\Downloads\asp.net_xls_帮助类\xls\Bin\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>G:\任务文件\NOIP\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

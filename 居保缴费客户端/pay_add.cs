@@ -44,6 +44,7 @@ namespace 居保缴费客户端
             label8.Text = "特殊人群";
             label9.Text = "缴费金额";
             label10.Text = "";
+            label11.Text = "备注";
 
             textBox1.Enabled = false;
             textBox3.Enabled = false;
@@ -187,10 +188,20 @@ namespace 居保缴费客户端
                         textBox8.Text = "困难老人";
                         textBox9.Text = "100";
                     }
-                    else
+                    else if(res[1]=="2")
                     {
                         textBox8.Text = "非特殊人群";
                         textBox9.Text = "150";
+                    }
+                    else if(res[1]=="3")
+                    {
+                        textBox8.Text = "低保人群";
+                        textBox9.Text = "0";
+                    }
+                    else
+                    {
+                        textBox8.Text = "重残人群";
+                        textBox9.Text = "0";
                     }
 
                     if (res[2] == "正常")
@@ -283,13 +294,23 @@ namespace 居保缴费客户端
                     textBox7.Text = cmd.Parameters["@LEIXING"].Value.ToString();
                     if (res[1] == "1")
                     {
-                        textBox8.Text = "苦难老人";
+                        textBox8.Text = "困难老人";
                         textBox9.Text = "100";
                     }
-                    else
+                    else if (res[1] == "2")
                     {
                         textBox8.Text = "非特殊人群";
                         textBox9.Text = "150";
+                    }
+                    else if (res[1] == "3")
+                    {
+                        textBox8.Text = "低保人群";
+                        textBox9.Text = "0";
+                    }
+                    else
+                    {
+                        textBox8.Text = "重残人群";
+                        textBox9.Text = "0";
                     }
 
                     if (res[2] == "正常")
@@ -335,7 +356,7 @@ namespace 居保缴费客户端
                 cmd.Parameters.Add("@GUID", SqlDbType.UniqueIdentifier, 14).Value = guid;
                 cmd.Parameters.Add("@DATE", SqlDbType.DateTime, 4).Value=DateTime.Now;
                 cmd.Parameters.Add("@MONEY", SqlDbType.Int, 4).Value=int.Parse(textBox9.Text);
-                cmd.Parameters.Add("@REGIN_CODE", SqlDbType.NVarChar, 12).Value=user[0];
+                cmd.Parameters.Add("@REGIN_CODE", SqlDbType.NVarChar, 100).Value=user[0]+richTextBox1.Text.Trim();
                 cmd.Parameters.Add("@RES", SqlDbType.Int, 4);
 
 

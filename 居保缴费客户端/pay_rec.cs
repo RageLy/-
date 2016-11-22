@@ -79,6 +79,7 @@ namespace 居保缴费客户端
                 mydt.Tables[0].Columns[2].ColumnName = "是否缴费";
                 mydt.Tables[0].Columns[3].ColumnName = "缴费金额";
                 mydt.Tables[0].Columns[4].ColumnName = "缴费时间";
+                mydt.Tables[0].Columns[5].ColumnName = "备注";
                 final_dt = mydt.Tables[0];
                 int r1 = 0, r2 = 0;
                 foreach (DataRow row2 in final_dt.Rows)
@@ -106,7 +107,7 @@ namespace 居保缴费客户端
             DateTime dt1 = DateTime.Now;
             string dt_1 = date_mange.Get_LongDate(dt1);       //防止电脑的日期格式有问题
             DateTime dt2 = new DateTime();
-            string sqlstring1 = "SELECT P.姓名,P.公民身份号码,P.是否缴费,Q.money,Q.date,Q.行号 FROM 人员基础信息 P INNER JOIN pay_rec Q ON P.行号=Q.行号 WHERE Q.operater='" + user[0] + "' AND Q.date ";
+            string sqlstring1 = "SELECT P.姓名,P.公民身份号码,P.是否缴费,Q.money,Q.date,Q.explain,Q.行号 FROM 人员基础信息 P INNER JOIN pay_rec Q ON P.行号=Q.行号 WHERE Q.operater='" + user[0] + "' AND Q.date ";
             if (comboBox1.SelectedIndex == 0)
             {
                 dt2 = DateTime.Parse(date_mange.Get_ShortDate(dt1) + " 00:00:00");
@@ -205,7 +206,7 @@ namespace 居保缴费客户端
         {
             try
             {
-                int a = 4;
+                int a = 5;
                 TableToExcelForXLS(final_dt, value1[0], ref a);
                 if (a == -1)
                 {
@@ -473,7 +474,7 @@ namespace 居保缴费客户端
             int index = dataGridView1.CurrentRow.Index;
             try
             {
-                string NUM = final_dt.Rows[index][5].ToString();
+                string NUM = final_dt.Rows[index][6].ToString();
                 pay_back f1 = new pay_back(NUM);
                 f1.ShowDialog();
                 if (f1.DialogResult == DialogResult.OK)
