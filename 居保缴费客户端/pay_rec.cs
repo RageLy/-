@@ -10,7 +10,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Threading;
-using Microsoft.Office.Interop.Excel;
 using System.IO;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
@@ -228,121 +227,121 @@ namespace 居保缴费客户端
 
         }
 
-        public void DataTabletoExcel(System.Data.DataTable tmpDataTable, string strFileName)    //将DataTable中的数据导出到excel
+        //public void DataTabletoExcel(System.Data.DataTable tmpDataTable, string strFileName)    //将DataTable中的数据导出到excel
 
-        {
-            if (tmpDataTable == null)
+        //{
+        //    if (tmpDataTable == null)
 
-                return;
+        //        return;
 
-            int rowNum = tmpDataTable.Rows.Count;
+        //    int rowNum = tmpDataTable.Rows.Count;
 
-            int columnNum = tmpDataTable.Columns.Count;
-            progressBar1.Visible = true;
-            progressBar1.Minimum = 0;
-            progressBar1.Maximum = rowNum;
-            progressBar1.Value = 0;
-
-
-            int rowIndex = 1;
-
-            int columnIndex = 0;
-
-            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel._Workbook xBk = null;
-            Microsoft.Office.Interop.Excel._Worksheet xSt = null;
-            Microsoft.Office.Interop.Excel.Range rng = null;
-            xBk = xlApp.Workbooks.Add();
-            xSt = (Microsoft.Office.Interop.Excel._Worksheet)xBk.Worksheets[1];
+        //    int columnNum = tmpDataTable.Columns.Count;
+        //    progressBar1.Visible = true;
+        //    progressBar1.Minimum = 0;
+        //    progressBar1.Maximum = rowNum;
+        //    progressBar1.Value = 0;
 
 
-            xlApp.DefaultFilePath = "";
+        //    int rowIndex = 1;
 
-            xlApp.DisplayAlerts = true;
+        //    int columnIndex = 0;
 
-            xlApp.SheetsInNewWorkbook = 1;
-
-
-
-            //将DataTable的列名导入Excel表第一行
-
-            foreach (DataColumn dc in tmpDataTable.Columns)
-
-            {
-
-                columnIndex++;
-                if (columnIndex == 6)          //只导出前五列的数据
-                    break;
-
-                xSt.Cells[rowIndex, columnIndex] = dc.ColumnName;
-
-            }
-
-            //将DataTable中的数据导入Excel中
+        //    Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+        //    Microsoft.Office.Interop.Excel._Workbook xBk = null;
+        //    Microsoft.Office.Interop.Excel._Worksheet xSt = null;
+        //    Microsoft.Office.Interop.Excel.Range rng = null;
+        //    xBk = xlApp.Workbooks.Add();
+        //    xSt = (Microsoft.Office.Interop.Excel._Worksheet)xBk.Worksheets[1];
 
 
-            rng = xSt.get_Range("B1", "F" + rowNum + 1);
-            xSt.Cells.Select();
+        //    xlApp.DefaultFilePath = "";
 
-            //rng.MergeCells = true;
-            rng.NumberFormatLocal = "@";
-            // rng.Font.Color = 121212;
+        //    xlApp.DisplayAlerts = true;
 
-            //EntireColumn.NumberFormat = "@";
-
-
-            for (int i = 0; i < rowNum; i++)
-
-            {
-
-                rowIndex++;
-
-                columnIndex = 0;
-
-                for (int j = 0; j < 5; j++)
-
-                {
-
-                    columnIndex++;
+        //    xlApp.SheetsInNewWorkbook = 1;
 
 
 
-                    xSt.Cells[rowIndex, columnIndex] = tmpDataTable.Rows[i][j].ToString();
-                    //rng = xSt.get_Range(xSt.Cells[i, j], xSt.Cells[i, j]);
-                    //rng.EntireColumn.ColumnWidth = 20;
-                    ////    rg.columns.autofit();
-                    //rng.NumberFormatLocal = "@";
-                    SetLab(i);
-                    SetPro(i);
+        //    //将DataTable的列名导入Excel表第一行
 
-                }
+        //    foreach (DataColumn dc in tmpDataTable.Columns)
 
-            }
+        //    {
+
+        //        columnIndex++;
+        //        if (columnIndex == 6)          //只导出前五列的数据
+        //            break;
+
+        //        xSt.Cells[rowIndex, columnIndex] = dc.ColumnName;
+
+        //    }
+
+        //    //将DataTable中的数据导入Excel中
 
 
+        //    rng = xSt.get_Range("B1", "F" + rowNum + 1);
+        //    xSt.Cells.Select();
+
+        //    //rng.MergeCells = true;
+        //    rng.NumberFormatLocal = "@";
+        //    // rng.Font.Color = 121212;
+
+        //    //EntireColumn.NumberFormat = "@";
+
+
+        //    for (int i = 0; i < rowNum; i++)
+
+        //    {
+
+        //        rowIndex++;
+
+        //        columnIndex = 0;
+
+        //        for (int j = 0; j < 5; j++)
+
+        //        {
+
+        //            columnIndex++;
+
+
+
+        //            xSt.Cells[rowIndex, columnIndex] = tmpDataTable.Rows[i][j].ToString();
+        //            //rng = xSt.get_Range(xSt.Cells[i, j], xSt.Cells[i, j]);
+        //            //rng.EntireColumn.ColumnWidth = 20;
+        //            ////    rg.columns.autofit();
+        //            //rng.NumberFormatLocal = "@";
+        //            SetLab(i);
+        //            SetPro(i);
+
+        //        }
+
+        //    }
 
 
 
 
-            //xlBook.SaveCopyAs(HttpUtility.UrlDecode(strFileName, System.Text.Encoding.UTF8));
 
-            xBk.SaveCopyAs(strFileName);
-            xBk.Close(false, null, null);
-            xlApp.Quit();
 
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(xBk);
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(xSt);
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
+        //    //xlBook.SaveCopyAs(HttpUtility.UrlDecode(strFileName, System.Text.Encoding.UTF8));
 
-            xBk = null;
-            xSt = null;
-            xlApp = null;
-            GC.Collect();
-            progressBar1.Visible = false;
-            progressBar1.Value = 0;
-            label2.Text = "";
+        //    xBk.SaveCopyAs(strFileName);
+        //    xBk.Close(false, null, null);
+        //    xlApp.Quit();
 
-        }
+        //    System.Runtime.InteropServices.Marshal.ReleaseComObject(xBk);
+        //    System.Runtime.InteropServices.Marshal.ReleaseComObject(xSt);
+        //    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
+
+        //    xBk = null;
+        //    xSt = null;
+        //    xlApp = null;
+        //    GC.Collect();
+        //    progressBar1.Visible = false;
+        //    progressBar1.Value = 0;
+        //    label2.Text = "";
+
+        //}
 
         public void TableToExcelForXLS(System.Data.DataTable dt, string file, ref int H_max)
         {

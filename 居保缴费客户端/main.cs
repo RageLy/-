@@ -75,7 +75,6 @@ namespace 居保缴费客户端
        // static Assembly amy = Assembly.LoadFrom("Student.dll");
         private void main_Load(object sender, EventArgs e)
         {
-            this.IsMdiContainer = true;
             ConfigurationManager.RefreshSection("appSetting");
             string[] user = ConfigurationManager.AppSettings["user"].Split(',');
             if(user[3]=="1")

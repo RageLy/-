@@ -33,9 +33,9 @@
             this.缴费信息录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.缴费信息更改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.缴费记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.基本信息修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,13 +75,6 @@
             this.缴费记录查询ToolStripMenuItem.Text = "缴费记录查询";
             this.缴费记录查询ToolStripMenuItem.Click += new System.EventHandler(this.缴费记录查询ToolStripMenuItem_Click);
             // 
-            // 修改密码ToolStripMenuItem
-            // 
-            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
-            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.修改密码ToolStripMenuItem.Text = "修改密码";
-            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
-            // 
             // 信息统计ToolStripMenuItem
             // 
             this.信息统计ToolStripMenuItem.Name = "信息统计ToolStripMenuItem";
@@ -96,6 +89,13 @@
             this.基本信息修改ToolStripMenuItem.Text = "基本信息修改";
             this.基本信息修改ToolStripMenuItem.Click += new System.EventHandler(this.基本信息修改ToolStripMenuItem_Click);
             // 
+            // 修改密码ToolStripMenuItem
+            // 
+            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
+            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.修改密码ToolStripMenuItem.Text = "修改密码";
+            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -103,6 +103,7 @@
             this.ClientSize = new System.Drawing.Size(801, 553);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

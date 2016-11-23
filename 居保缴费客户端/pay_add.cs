@@ -70,7 +70,7 @@ namespace 居保缴费客户端
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text.Trim().Length != 16 && textBox2.Text.Trim().Length != 18)
+            if (textBox2.Text.Trim().Length != 15 && textBox2.Text.Trim().Length != 18)
             {
                 MessageBox.Show("身份证号码长度有误");
                 button2.Enabled = false;
