@@ -33,9 +33,11 @@
             this.缴费信息录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.缴费信息更改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.缴费记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.基本信息修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.人员信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.缴费信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,15 +77,11 @@
             this.缴费记录查询ToolStripMenuItem.Text = "缴费记录查询";
             this.缴费记录查询ToolStripMenuItem.Click += new System.EventHandler(this.缴费记录查询ToolStripMenuItem_Click);
             // 
-            // 修改密码ToolStripMenuItem
-            // 
-            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
-            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.修改密码ToolStripMenuItem.Text = "修改密码";
-            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
-            // 
             // 信息统计ToolStripMenuItem
             // 
+            this.信息统计ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.人员信息ToolStripMenuItem,
+            this.缴费信息ToolStripMenuItem});
             this.信息统计ToolStripMenuItem.Name = "信息统计ToolStripMenuItem";
             this.信息统计ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.信息统计ToolStripMenuItem.Text = "信息统计";
@@ -96,6 +94,27 @@
             this.基本信息修改ToolStripMenuItem.Text = "基本信息修改";
             this.基本信息修改ToolStripMenuItem.Click += new System.EventHandler(this.基本信息修改ToolStripMenuItem_Click);
             // 
+            // 修改密码ToolStripMenuItem
+            // 
+            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
+            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.修改密码ToolStripMenuItem.Text = "修改密码";
+            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
+            // 
+            // 人员信息ToolStripMenuItem
+            // 
+            this.人员信息ToolStripMenuItem.Name = "人员信息ToolStripMenuItem";
+            this.人员信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.人员信息ToolStripMenuItem.Text = "人员信息";
+            this.人员信息ToolStripMenuItem.Click += new System.EventHandler(this.人员信息ToolStripMenuItem_Click);
+            // 
+            // 缴费信息ToolStripMenuItem
+            // 
+            this.缴费信息ToolStripMenuItem.Name = "缴费信息ToolStripMenuItem";
+            this.缴费信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.缴费信息ToolStripMenuItem.Text = "缴费信息";
+            this.缴费信息ToolStripMenuItem.Click += new System.EventHandler(this.缴费信息ToolStripMenuItem_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -103,6 +122,7 @@
             this.ClientSize = new System.Drawing.Size(801, 553);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -124,5 +144,7 @@
         private System.Windows.Forms.ToolStripMenuItem 信息统计ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 基本信息修改ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 人员信息ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 缴费信息ToolStripMenuItem;
     }
 }

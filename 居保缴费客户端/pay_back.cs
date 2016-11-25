@@ -86,7 +86,7 @@ namespace 居保缴费客户端
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@HANGHAO", SqlDbType.UniqueIdentifier, 14).Value = guid;
                 cmd.Parameters.Add("@DATES", SqlDbType.DateTime, 4);
-                cmd.Parameters.Add("@BIRTHDAY", SqlDbType.Date, 31);
+                cmd.Parameters.Add("@BIRTHDAY", SqlDbType.VarChar, 20);
                 cmd.Parameters.Add("@RES", SqlDbType.Int, 4);
                 cmd.Parameters.Add("@NAME", SqlDbType.NVarChar, 12);
                 cmd.Parameters.Add("@SEX", SqlDbType.NVarChar, 12);
@@ -123,7 +123,6 @@ namespace 居保缴费客户端
                     textBox7.Text = cmd.Parameters["@LEIXING"].Value.ToString();
                     textBox8.Text = cmd.Parameters["@DATES"].Value.ToString();
                     textBox9.Text = cmd.Parameters["@MONEY"].Value.ToString();
-
                 }
                 connection1.Close();
             }

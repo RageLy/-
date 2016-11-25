@@ -75,7 +75,6 @@ namespace 居保缴费客户端
        // static Assembly amy = Assembly.LoadFrom("Student.dll");
         private void main_Load(object sender, EventArgs e)
         {
-            this.IsMdiContainer = true;
             ConfigurationManager.RefreshSection("appSetting");
             string[] user = ConfigurationManager.AppSettings["user"].Split(',');
             if(user[3]=="1")
@@ -112,17 +111,7 @@ namespace 居保缴费客户端
 
         private void 信息统计ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!ShowChildrenForm("sum_inf"))
-            {
-                sum_inf f2 = new sum_inf();
-                f2.MdiParent = this;
-                f2.WindowState = FormWindowState.Maximized;
-                f2.Show();
-            }
-            else
-            {
-
-            }
+           
         }
 
         private void 基本信息修改ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -159,6 +148,36 @@ namespace 居保缴费客户端
                 {
                     MessageBox.Show("用户取消修改");
                 }
+            }
+        }
+
+        private void 人员信息ToolStripMenuItem_Click(object sender, EventArgs e)   //人员信息
+        {
+            if (!ShowChildrenForm("sum_inf"))
+            {
+                sum_inf f2 = new sum_inf();
+                f2.MdiParent = this;
+                f2.WindowState = FormWindowState.Maximized;
+                f2.Show();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void 缴费信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!ShowChildrenForm("Sum_pay_Inf"))
+            {
+                Sum_pay_Inf f2 = new Sum_pay_Inf();
+                f2.MdiParent = this;
+                f2.WindowState = FormWindowState.Maximized;
+                f2.Show();
+            }
+            else
+            {
+
             }
         }
     }

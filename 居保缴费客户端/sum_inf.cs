@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
-using Microsoft.Office.Interop.Excel;
 using System.IO;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
@@ -90,7 +89,7 @@ namespace 居保缴费客户端
                 DataSet mydt = new DataSet();
                 myadp.Fill(mydt, "table1");
                 final_dt = mydt.Tables[0];
-                if (user[3] == "1")
+                if (user[3] == "2")
                 {
                     foreach (DataRow row2 in final_dt.Rows)
                     {
@@ -98,7 +97,7 @@ namespace 居保缴费客户端
                             comboBox1.Items.Add(row2[1].ToString());
                     }
                 }
-                else
+                else if((user[3] == "3"))
                 {
                     comboBox1.Items.Add("全部");
                     foreach (DataRow row2 in final_dt.Rows)
