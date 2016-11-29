@@ -418,7 +418,7 @@ namespace 居保缴费客户端
         {
             SaveFileDialog sfd = new SaveFileDialog();
             string name = DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString();
-            sfd.FileName = name + "-缴费记录";
+            sfd.FileName = comboBox1.Text+"-"+comboBox2.Text+"-"+comboBox3.Text+"-"+name + "-缴费记录";
             sfd.Filter = "(*.xls)|*.xls"; //删选、设定文件显示类型
             if (sfd.ShowDialog() == DialogResult.OK)
             {

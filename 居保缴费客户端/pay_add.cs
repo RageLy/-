@@ -23,6 +23,7 @@ namespace 居保缴费客户端
         private string[] r_steps = new string[10];
         private string[] user;
         private string[] values = new string[10];       //
+        static private string aaa = "";
         Guid guid;                                    //记录当前缴费人员的guid
         private void pay_add_Load(object sender, EventArgs e)
         {
@@ -34,6 +35,7 @@ namespace 居保缴费客户端
             button3.Text = "下一个";
             button3.Visible = false;
             button3.Enabled = false;
+            checkBox1.Text = "外来或者暂住人员";
 
             label1.Text = "姓名";
             label3.Text = "性别";
@@ -70,7 +72,7 @@ namespace 居保缴费客户端
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text.Trim().Length != 16 && textBox2.Text.Trim().Length != 18)
+            if (textBox2.Text.Trim().Length != 15 && textBox2.Text.Trim().Length != 18)
             {
                 MessageBox.Show("身份证号码长度有误");
                 button2.Enabled = false;
@@ -116,6 +118,7 @@ namespace 居保缴费客户端
             if (res == true)
             {
                 textBox2.Text = "";
+                checkBox1.Checked = false;
                 button2.Enabled = false;
             }
             else
@@ -223,6 +226,7 @@ namespace 居保缴费客户端
                         button3.Enabled = false;
                     }
                     results = true;
+                    aaa = textBox9.Text;
                 }
                 connection1.Close();
             }
@@ -332,6 +336,7 @@ namespace 居保缴费客户端
                         button3.Enabled = false;
                     }
                     results = true;
+                    aaa = textBox9.Text;
                 }
                 connection1.Close();
             }
@@ -393,8 +398,18 @@ namespace 居保缴费客户端
             return results;
         }
 
-        #endregion
 
-       
+        #endregion
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {          
+            if (checkBox1.Checked==true)
+            {
+                textBox9.Text = "150";
+            }
+            else
+            {
+                textBox9.Text = aaa;
+            }
+        }
     }
 }
