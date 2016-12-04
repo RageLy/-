@@ -121,6 +121,12 @@
     <Compile Include="Sum_pay_Inf.Designer.CS">
       <DependentUpon>Sum_pay_Inf.CS</DependentUpon>
     </Compile>
+    <Compile Include="Sum_sum_pay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sum_sum_pay.Designer.cs">
+      <DependentUpon>Sum_sum_pay.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="change_inf.resx">
       <DependentUpon>change_inf.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sum_pay_Inf.resx">
       <DependentUpon>Sum_pay_Inf.CS</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sum_sum_pay.resx">
+      <DependentUpon>Sum_sum_pay.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

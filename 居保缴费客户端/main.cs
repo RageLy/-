@@ -14,10 +14,32 @@ namespace 居保缴费客户端
 {
     public partial class main : Form
     {
+        #region 初始加载的函数
         public main()
         {
             InitializeComponent();
         }
+        private void main_Load(object sender, EventArgs e)              //判断用户权限
+        {
+            ConfigurationManager.RefreshSection("appSetting");
+            string[] user = ConfigurationManager.AppSettings["user"].Split(',');
+            if (user[3] == "1")
+            {
+                信息统计ToolStripMenuItem.Enabled = false;
+                基本信息修改ToolStripMenuItem.Enabled = false;
+            }
+            else if (user[3] == "2")
+            {
+                信息统计ToolStripMenuItem.Enabled = true;
+                基本信息修改ToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                信息统计ToolStripMenuItem.Enabled = true;
+                基本信息修改ToolStripMenuItem.Enabled = true;
+            }
+        }
+        #endregion
 
         #region 功能函数
         public bool ShowChildrenForm(string p_ChildrenFormText)    //防止打开多个窗口
@@ -41,7 +63,8 @@ namespace 居保缴费客户端
 
         #endregion
 
-        private void 缴费信息录入ToolStripMenuItem_Click(object sender, EventArgs e)
+        #region 按钮事件
+        private void 缴费信息录入ToolStripMenuItem_Click(object sender, EventArgs e)   //缴费信息录入
         {
             if (!ShowChildrenForm("pay_add"))
             {
@@ -54,10 +77,9 @@ namespace 居保缴费客户端
             {
 
             }
-        }
-        
+        }   
 
-        private void 缴费信息更改ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 缴费信息更改ToolStripMenuItem_Click(object sender, EventArgs e)      //人员信息录入
         {
             if (!ShowChildrenForm("pay_change"))
             {
@@ -72,29 +94,9 @@ namespace 居保缴费客户端
             }
         }
 
-       // static Assembly amy = Assembly.LoadFrom("Student.dll");
-        private void main_Load(object sender, EventArgs e)
-        {
-            ConfigurationManager.RefreshSection("appSetting");
-            string[] user = ConfigurationManager.AppSettings["user"].Split(',');
-            if(user[3]=="1")
-            {
-                信息统计ToolStripMenuItem.Enabled = false;
-                基本信息修改ToolStripMenuItem.Enabled = false;
-            }
-            else if (user[3] == "2")
-            {
-                信息统计ToolStripMenuItem.Enabled = true;
-                基本信息修改ToolStripMenuItem.Enabled = false;
-            }
-            else
-            {
-                信息统计ToolStripMenuItem.Enabled = true;
-                基本信息修改ToolStripMenuItem.Enabled = true;
-            }
-        }
 
-        private void 缴费记录查询ToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void 缴费记录查询ToolStripMenuItem_Click(object sender, EventArgs e)        //缴费记录查询
         {
             if (!ShowChildrenForm("pay_rec"))
             {
@@ -114,7 +116,7 @@ namespace 居保缴费客户端
            
         }
 
-        private void 基本信息修改ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 基本信息修改ToolStripMenuItem_Click(object sender, EventArgs e)       //基本信息修改
         {
             if (!ShowChildrenForm("change_inf"))
             {
@@ -129,7 +131,7 @@ namespace 居保缴费客户端
             }
         }
 
-        private void 修改密码ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 修改密码ToolStripMenuItem_Click(object sender, EventArgs e)    //修改密码按钮
         {
             change_password f1 = new change_password();
             f1.ShowDialog();
@@ -166,7 +168,7 @@ namespace 居保缴费客户端
             }
         }
 
-        private void 缴费信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 缴费信息ToolStripMenuItem_Click(object sender, EventArgs e)    //缴费信息查询按钮
         {
             if (!ShowChildrenForm("Sum_pay_Inf"))
             {
@@ -180,5 +182,21 @@ namespace 居保缴费客户端
 
             }
         }
+
+        private void 报表数据ToolStripMenuItem_Click(object sender, EventArgs e)      //报表查询
+        {
+            if (!ShowChildrenForm("Sum_sum_pay"))
+            {
+                Sum_sum_pay f2 = new Sum_sum_pay();
+                f2.MdiParent = this;
+                f2.WindowState = FormWindowState.Maximized;
+                f2.Show();
+            }
+            else
+            {
+
+            }
+        }
+        #endregion
     }
 }

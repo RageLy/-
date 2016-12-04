@@ -34,10 +34,11 @@
             this.缴费信息更改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.缴费记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.基本信息修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.人员信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.缴费信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.基本信息修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.报表数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,11 +82,26 @@
             // 
             this.信息统计ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.人员信息ToolStripMenuItem,
-            this.缴费信息ToolStripMenuItem});
+            this.缴费信息ToolStripMenuItem,
+            this.报表数据ToolStripMenuItem});
             this.信息统计ToolStripMenuItem.Name = "信息统计ToolStripMenuItem";
             this.信息统计ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.信息统计ToolStripMenuItem.Text = "信息统计";
             this.信息统计ToolStripMenuItem.Click += new System.EventHandler(this.信息统计ToolStripMenuItem_Click);
+            // 
+            // 人员信息ToolStripMenuItem
+            // 
+            this.人员信息ToolStripMenuItem.Name = "人员信息ToolStripMenuItem";
+            this.人员信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.人员信息ToolStripMenuItem.Text = "人员信息";
+            this.人员信息ToolStripMenuItem.Click += new System.EventHandler(this.人员信息ToolStripMenuItem_Click);
+            // 
+            // 缴费信息ToolStripMenuItem
+            // 
+            this.缴费信息ToolStripMenuItem.Name = "缴费信息ToolStripMenuItem";
+            this.缴费信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.缴费信息ToolStripMenuItem.Text = "缴费信息";
+            this.缴费信息ToolStripMenuItem.Click += new System.EventHandler(this.缴费信息ToolStripMenuItem_Click);
             // 
             // 基本信息修改ToolStripMenuItem
             // 
@@ -101,19 +117,12 @@
             this.修改密码ToolStripMenuItem.Text = "修改密码";
             this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
             // 
-            // 人员信息ToolStripMenuItem
+            // 报表数据ToolStripMenuItem
             // 
-            this.人员信息ToolStripMenuItem.Name = "人员信息ToolStripMenuItem";
-            this.人员信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.人员信息ToolStripMenuItem.Text = "人员信息";
-            this.人员信息ToolStripMenuItem.Click += new System.EventHandler(this.人员信息ToolStripMenuItem_Click);
-            // 
-            // 缴费信息ToolStripMenuItem
-            // 
-            this.缴费信息ToolStripMenuItem.Name = "缴费信息ToolStripMenuItem";
-            this.缴费信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.缴费信息ToolStripMenuItem.Text = "缴费信息";
-            this.缴费信息ToolStripMenuItem.Click += new System.EventHandler(this.缴费信息ToolStripMenuItem_Click);
+            this.报表数据ToolStripMenuItem.Name = "报表数据ToolStripMenuItem";
+            this.报表数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.报表数据ToolStripMenuItem.Text = "报表数据";
+            this.报表数据ToolStripMenuItem.Click += new System.EventHandler(this.报表数据ToolStripMenuItem_Click);
             // 
             // main
             // 
@@ -146,5 +155,6 @@
         private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 人员信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 缴费信息ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 报表数据ToolStripMenuItem;
     }
 }
