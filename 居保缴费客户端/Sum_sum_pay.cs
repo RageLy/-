@@ -39,7 +39,7 @@ namespace 居保缴费客户端
                 dataGridView1.RowHeadersVisible = false;
                 dataGridView1.AutoGenerateColumns = false;
 
-                label2.Text = "起始事件";
+                label2.Text = "起始时间";
                 label3.Text = "结束时间";
 
                 button1.Text = "查询";
