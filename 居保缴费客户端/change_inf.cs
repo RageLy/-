@@ -189,10 +189,10 @@ namespace 居保缴费客户端
             try
             {
                 connection1.Open();
-                string sqlstring1 = "UPDATE 人员基础信息 SET 公民身份证号码='"+textBox3.Text.Trim()+"',姓名='"+ textBox1.Text.Trim()
-                    + "',性别='" + comboBox1.Text + "',出生日期='" + textBox4.Text.Trim() + "'社会保障卡号='" + textBox5.Text.Trim() 
-                    + "',医疗待遇类别='" + comboBox2.Text + "',特殊群体='" + comboBox3.Text + "',类型='" + comboBox4.Text
-                    + "', WHERE 行号='" + guid + "'";
+                string sqlstring1 = "UPDATE 人员基础信息 SET 公民身份号码='"+textBox3.Text.Trim()+"',姓名='"+ textBox1.Text.Trim()
+                    + "',性别='" + comboBox1.Text + "',出生日期='" + textBox4.Text.Trim() + "',社会保障卡卡号='" + textBox5.Text.Trim() 
+                    + "',医疗待遇类别='" + comboBox2.Text + "',特殊人群='" + comboBox3.Text + "',类型='" + comboBox4.Text
+                    + "'  WHERE 行号='" + guid + "'";
                 MessageBox.Show(sqlstring1);
                 SqlCommand mycom = new SqlCommand(sqlstring1, connection1);
                 int s = mycom.ExecuteNonQuery();
@@ -202,11 +202,15 @@ namespace 居保缴费客户端
                 }
                 results = true;
               
-                connection1.Close();
+              
             }
             catch (Exception e1)
             {
                 MessageBox.Show(e1.ToString());
+            }
+            finally
+            {
+                connection1.Close();
             }
             return results;
         }
