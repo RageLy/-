@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using 验证码;
 
 namespace 居保缴费客户端
 {
@@ -19,6 +20,9 @@ namespace 居保缴费客户端
             InitializeComponent();
         }
         private string[] user;
+        private int temps = 0;           //记录输错的次数
+        private string codes = "";      //验证字符串
+        private Bitmap maps;            //验证码
         private void check()
         {
 
@@ -31,6 +35,10 @@ namespace 居保缴费客户端
             label3.Text = "密码:";
             button1.Text = "登陆";
             button2.Text = "取消";
+            label4.Text = "验证码";
+            label4.Visible = false;
+            textBox4.Enabled = false;
+            textBox4.Visible = false;
             checkBox1.Text = "记住密码";
             checkBox1.Checked = true;
             user = ConfigurationManager.AppSettings["user"].Split(',');
@@ -50,41 +58,102 @@ namespace 居保缴费客户端
             {
                 MessageBox.Show("地区编码错误");
                 textBox1.Text = "";
+                temps++;
             }
             else if (textBox2.Text == "" || textBox3.Text == "")
             {
                 MessageBox.Show("用户名或密码为空");
+                temps++;
             }
             else
             {
-                bool res = login();
-                if (res == true)
+                if (temps >= 3)
                 {
-                    if (checkBox1.Checked == true)
+                    if (textBox4.Text == codes)
                     {
-                        string temp = "";
-                        temp = temp + textBox1.Text + ",";
-                        temp = temp + textBox2.Text + ",";
-                        temp = temp + textBox3.Text + ",";
-                        temp = temp + user[3];
-                        SetValue("user", temp);
-                        //  MessageBox.Show("保存成功");
+                        bool res = login();
+                        if (res == true)
+                        {
+                            if (checkBox1.Checked == true)
+                            {
+                                string temp = "";
+                                temp = temp + textBox1.Text + ",";
+                                temp = temp + textBox2.Text + ",";
+                                temp = temp + textBox3.Text + ",";
+                                temp = temp + user[3];
+                                SetValue("user", temp);
+                                //  MessageBox.Show("保存成功");
+                            }
+                            else
+                            {
+                                string temp = "";
+                                temp = temp + textBox1.Text + ",";
+                                temp = temp + textBox2.Text + ",";
+                                temp = temp + "," + user[3];
+                                SetValue("user", temp);
+                            }
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {
-                        string temp = "";
-                        temp = temp + textBox1.Text + ",";
-                        temp = temp + textBox2.Text + ",";
-                        temp = temp + "," + user[3];
-                        SetValue("user", temp);
+                        MessageBox.Show("验证码输入错误");
                     }
-                    this.DialogResult = DialogResult.OK;
+                }
+                else
+
+                {
+                    bool res = login();
+                    if (res == true)
+                    {
+                        if (checkBox1.Checked == true)
+                        {
+                            string temp = "";
+                            temp = temp + textBox1.Text + ",";
+                            temp = temp + textBox2.Text + ",";
+                            temp = temp + textBox3.Text + ",";
+                            temp = temp + user[3];
+                            SetValue("user", temp);
+                            //  MessageBox.Show("保存成功");
+                        }
+                        else
+                        {
+                            string temp = "";
+                            temp = temp + textBox1.Text + ",";
+                            temp = temp + textBox2.Text + ",";
+                            temp = temp + "," + user[3];
+                            SetValue("user", temp);
+                        }
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        temps++;
+                    }
+                }
+            }
+
+            if(temps==3)
+            {
+                Class1 c1 = new Class1();
+                bool res = c1.UpdateVerifyCode(ref codes, ref maps);
+                if(res==true)
+                {
+                    pictureBox1.Image = maps;
+                    textBox4.Visible = true;
+                    textBox4.Enabled = true;
+                    label4.Visible = true;
                 }
                 else
                 {
-                    
+                    MessageBox.Show("出现错误！程序即将关闭");
                 }
             }
+
         }
 
         #region
